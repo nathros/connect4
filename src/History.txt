@@ -1,0 +1,28 @@
+Version 1.0
+	* Initial Version *
+
+Version 1.10
+	*	Corrected incorrect finding of winning four in a row combination.
+	* Rewritten method of calulation position of sticktrough lines.
+
+Version: 1.15
+	* ADDED:	Sometimes there were more then 1 winning combination, now all are shown.
+
+Version: 1.40
+	* Can now save and load game.
+	* Settings saved to ini file.
+	* Now there are coin movement animations.
+	* Ability to undo and redo moves.
+	* Added bot.
+	* New skin.
+	* Win line now extendes beyond four coins.
+	* Halved memory usage.
+	* Halved executable size (ignoring debug data).
+	* Graphics rendering method has been totally rewritten, now uses less CPU resources.
+	* Flickering is now gone when displaying coin or coin preview.
+
+Version: 1.40a
+  * Bug fixes related bot.
+  * Bot now makes better decisions (But may seem more mechanical).
+
+Still needs 

@@ -1,0 +1,338 @@
+object PlayGround: TPlayGround
+  Left = 453
+  Height = 583
+  Top = 122
+  Width = 577
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
+  Caption = 'Connect4'
+  ClientHeight = 563
+  ClientWidth = 577
+  Menu = MainMenu
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  LCLVersion = '1.6.0.4'
+  object PaintBoxBottom: TPaintBox
+    Left = 16
+    Height = 479
+    Top = 48
+    Width = 544
+    OnPaint = PaintBoxBottomPaint
+  end
+  object PaintBox: TPaintBox
+    Left = 16
+    Height = 479
+    Top = 48
+    Width = 544
+    Enabled = False
+    OnMouseDown = PaintBoxMouseDown
+    OnMouseLeave = PaintBoxMouseLeave
+    OnMouseMove = PaintBoxMouseMove
+    OnPaint = PaintBoxPaint
+  end
+  object CoinPreview: TImage
+    Left = 16
+    Height = 64
+    Top = 48
+    Width = 64
+    Visible = False
+  end
+  object ToolBar: TToolBar
+    Left = 0
+    Height = 34
+    Top = 0
+    Width = 577
+    ButtonHeight = 32
+    ButtonWidth = 32
+    Caption = 'ToolBar'
+    TabOrder = 0
+    object ToolButtonNewGame: TToolButton
+      Left = 1
+      Hint = 'New game'
+      Top = 2
+      Caption = 'ToolButtonNewGame'
+      ImageIndex = 0
+      OnClick = MenuItemNewGameClick
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object ToolButtonUndoMove: TToolButton
+      Left = 119
+      Hint = 'Undo last move'
+      Top = 2
+      Caption = 'ToolButtonUndoMove'
+      Enabled = False
+      ImageIndex = 3
+      OnClick = MenuItemUndoClick
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object ToolButtonRedoMove: TToolButton
+      Left = 151
+      Hint = 'Redo previous move'
+      Top = 2
+      Caption = 'ToolButtonRedoMove'
+      Enabled = False
+      ImageIndex = 4
+      OnClick = MenuItemRedoClick
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object ToolButtonDivider1: TToolButton
+      Left = 33
+      Height = 32
+      Top = 2
+      Width = 11
+      Caption = 'ToolButtonDivider1'
+      Style = tbsDivider
+    end
+    object ToolButtonSaveGame: TToolButton
+      Left = 44
+      Hint = 'Save game'
+      Top = 2
+      Caption = 'ToolButtonSaveGame'
+      Enabled = False
+      ImageIndex = 1
+      OnClick = MenuItemSaveGameClick
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object ToolButtonDivider2: TToolButton
+      Left = 108
+      Height = 32
+      Top = 2
+      Width = 11
+      Caption = 'ToolButtonDivider2'
+      Style = tbsDivider
+    end
+    object ToolButtonLoadGame: TToolButton
+      Left = 76
+      Hint = 'Load game'
+      Top = 2
+      Caption = 'ToolButtonLoadGame'
+      Enabled = False
+      ImageIndex = 2
+      OnClick = MenuItemLoadGameClick
+      ParentShowHint = False
+      ShowHint = True
+    end
+  end
+  object StatusBar: TStatusBar
+    Left = 0
+    Height = 23
+    Top = 540
+    Width = 577
+    AutoHint = True
+    Panels = <    
+      item
+        Width = 50
+      end>
+    ParentShowHint = False
+    SimplePanel = False
+    SizeGrip = False
+    ShowHint = True
+  end
+  object MainMenu: TMainMenu
+    left = 104
+    top = 72
+    object MenuItemGame: TMenuItem
+      Caption = 'Game'
+      object MenuItemNewGame: TMenuItem
+        Caption = 'New Game'
+        Hint = 'Start a new game'
+        OnClick = MenuItemNewGameClick
+      end
+      object MenuItemSeparator1: TMenuItem
+        Caption = '-'
+      end
+      object MenuItemSaveGame: TMenuItem
+        Caption = 'Save Game'
+        Hint = 'Save game'
+        OnClick = MenuItemSaveGameClick
+      end
+      object MenuItemLoadGame: TMenuItem
+        Caption = 'Load Game'
+        Hint = 'Load game'
+        OnClick = MenuItemLoadGameClick
+      end
+      object MenuItemSeparator2: TMenuItem
+        Caption = '-'
+      end
+      object MenuItemExit: TMenuItem
+        Caption = 'Exit'
+        Hint = 'Exit program'
+        OnClick = MenuItemExitClick
+      end
+    end
+    object MenuItemEdit: TMenuItem
+      Caption = 'Edit'
+      object MenuItemUndo: TMenuItem
+        Caption = 'Undo'
+        Enabled = False
+        Hint = 'Undo last move'
+        ShortCut = 16474
+        OnClick = MenuItemUndoClick
+      end
+      object MenuItemRedo: TMenuItem
+        Caption = 'Redo'
+        Enabled = False
+        Hint = 'Redo previous move'
+        ShortCut = 16473
+        OnClick = MenuItemRedoClick
+      end
+    end
+    object MenuItemView: TMenuItem
+      Caption = 'View'
+      object MenuItemSelectSkin: TMenuItem
+        Caption = 'Skin'
+        object MenuItemSkinCrystal: TMenuItem
+          Caption = 'Crystal'
+          ShowAlwaysCheckable = True
+          OnClick = MenuItemSkinClick
+        end
+        object MenuItemSkinCartoon: TMenuItem
+          Caption = 'Cartoon'
+          ShowAlwaysCheckable = True
+          OnClick = MenuItemSkinClick
+        end
+      end
+      object MenuItemShowToolBar: TMenuItem
+        Caption = 'Show ToolBar'
+        Checked = True
+        Hint = 'Show/Hide ToolBar'
+        ShowAlwaysCheckable = True
+        OnClick = MenuItemShowToolBarClick
+      end
+      object MenuItemShowStatusBar: TMenuItem
+        Caption = 'Show StatusBar'
+        Hint = 'Show/Hide StatusBar'
+        ShowAlwaysCheckable = True
+        OnClick = MenuItemShowStatusBarClick
+      end
+    end
+    object MenuItemSettings: TMenuItem
+      Caption = 'Settings'
+      object MenuItemNewCoinPosition: TMenuItem
+        Caption = 'New Coin Position'
+        Hint = 'Set the spawn position of a new coin'
+        object MenuItemNewCoin1: TMenuItem
+          Caption = 'Left'
+          RadioItem = True
+          ShowAlwaysCheckable = True
+          OnClick = MenuItemNewCoinPos
+        end
+        object MenuItemNewCoin2: TMenuItem
+          Caption = 'Centre'
+          RadioItem = True
+          ShowAlwaysCheckable = True
+          OnClick = MenuItemNewCoinPos
+        end
+        object MenuItemNewCoin3: TMenuItem
+          Caption = 'Right'
+          RadioItem = True
+          ShowAlwaysCheckable = True
+          OnClick = MenuItemNewCoinPos
+        end
+        object MenuItemNewCoin0: TMenuItem
+          Caption = 'Random'
+          RadioItem = True
+          ShowAlwaysCheckable = True
+          OnClick = MenuItemNewCoinPos
+        end
+      end
+      object MenuItemStartingPlayer: TMenuItem
+        Caption = 'Starting Player'
+        Hint = 'Set the starting player of a new game'
+        object MenuItemStart1: TMenuItem
+          Caption = 'Player 1'
+          RadioItem = True
+          ShowAlwaysCheckable = True
+          OnClick = MenuItemStart
+        end
+        object MenuItemStart2: TMenuItem
+          Caption = 'Player 2'
+          RadioItem = True
+          ShowAlwaysCheckable = True
+          OnClick = MenuItemStart
+        end
+        object MenuItemStart0: TMenuItem
+          Caption = 'Random'
+          RadioItem = True
+          ShowAlwaysCheckable = True
+          OnClick = MenuItemStart
+        end
+      end
+      object MenuItemBotSkill: TMenuItem
+        Caption = 'Bot Skill'
+        Hint = 'Set the skill of the computer'
+        object MenuItemBotLevel1: TMenuItem
+          Caption = 'Level 1'
+          ShowAlwaysCheckable = True
+          OnClick = MenuItemBotLevelClick
+        end
+        object MenuItemBotLevel2: TMenuItem
+          Caption = 'Level 2'
+          ShowAlwaysCheckable = True
+          OnClick = MenuItemBotLevelClick
+        end
+        object MenuItemBotLevel3: TMenuItem
+          Caption = 'Level 3'
+          ShowAlwaysCheckable = True
+          OnClick = MenuItemBotLevelClick
+        end
+        object MenuItemBotLevel4: TMenuItem
+          Caption = 'Level 4'
+          OnClick = MenuItemBotLevelClick
+        end
+        object MenuItemBotLevel5: TMenuItem
+          Caption = 'Level 5'
+          OnClick = MenuItemBotLevelClick
+        end
+      end
+      object MenuItemPlayers: TMenuItem
+        Caption = 'Players'
+        Hint = 'Set up players'
+        OnClick = MenuItemPlayersClick
+      end
+      object MenuItemShowCoinPreview: TMenuItem
+        Caption = 'Show Coin Preview'
+        Hint = 'Show/Hide the position of the coin preview'
+        ShowAlwaysCheckable = True
+        OnClick = MenuItemShowCoinPreviewClick
+      end
+    end
+    object MenuItemHelp: TMenuItem
+      Caption = 'Help'
+      object MenuItemAbout: TMenuItem
+        Caption = 'About'
+        OnClick = MenuItemAboutClick
+      end
+    end
+  end
+  object YMovement: TTimer
+    Enabled = False
+    Interval = 10
+    OnTimer = YMovementTimer
+    left = 488
+    top = 72
+  end
+  object SmoothX: TTimer
+    Enabled = False
+    Interval = 20
+    OnTimer = SmoothXTimer
+    left = 400
+    top = 72
+  end
+  object SaveDialog: TSaveDialog
+    Filter = 'Connect4 Save Game (*.save)|*.save'
+    Options = [ofHideReadOnly, ofViewDetail]
+    left = 176
+    top = 72
+  end
+  object LoadDialog: TOpenDialog
+    Filter = 'Connect4 Save Game (*.save)|*.save'
+    Options = [ofHideReadOnly, ofViewDetail]
+    left = 256
+    top = 72
+  end
+end

@@ -1,0 +1,7 @@
+/.metadata/
+backup/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib

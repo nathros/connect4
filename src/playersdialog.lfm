@@ -1,0 +1,134 @@
+object PlayersDialogForm: TPlayersDialogForm
+  Left = 1055
+  Height = 257
+  Top = 190
+  Width = 295
+  BorderIcons = []
+  BorderStyle = bsToolWindow
+  Caption = 'Players'
+  ClientHeight = 257
+  ClientWidth = 295
+  OnCreate = FormCreate
+  Position = poMainFormCenter
+  LCLVersion = '1.6.0.4'
+  object ButtonPanel: TButtonPanel
+    Left = 6
+    Height = 34
+    Top = 217
+    Width = 283
+    OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
+    HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
+    CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
+    CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
+    TabOrder = 0
+    ShowButtons = [pbOK, pbCancel]
+  end
+  object Player1GroupBox: TGroupBox
+    Left = 6
+    Height = 96
+    Top = 8
+    Width = 282
+    Caption = 'Player 1'
+    ClientHeight = 76
+    ClientWidth = 278
+    TabOrder = 1
+    object Player1Coin: TImage
+      Left = 208
+      Height = 64
+      Top = 8
+      Width = 64
+    end
+    object Player1LabeledEdit: TLabeledEdit
+      Left = 8
+      Height = 23
+      Top = 50
+      Width = 184
+      EditLabel.AnchorSideLeft.Control = Player1LabeledEdit
+      EditLabel.AnchorSideRight.Control = Player1LabeledEdit
+      EditLabel.AnchorSideRight.Side = asrBottom
+      EditLabel.AnchorSideBottom.Control = Player1LabeledEdit
+      EditLabel.Left = 8
+      EditLabel.Height = 15
+      EditLabel.Top = 32
+      EditLabel.Width = 184
+      EditLabel.Caption = 'Name'
+      EditLabel.ParentColor = False
+      TabOrder = 0
+    end
+    object Player1TypeHumRadioButton: TRadioButton
+      Left = 8
+      Height = 19
+      Top = 8
+      Width = 60
+      Caption = 'Human'
+      OnClick = PlayerRadioButtonClick
+      TabOrder = 1
+    end
+    object Player1TypeCPURadioButton: TRadioButton
+      AnchorSideRight.Side = asrBottom
+      Left = 104
+      Height = 19
+      Top = 8
+      Width = 74
+      Caption = 'Computer'
+      OnClick = PlayerRadioButtonClick
+      TabOrder = 2
+    end
+  end
+  object Player2GroupBox: TGroupBox
+    Left = 6
+    Height = 96
+    Top = 112
+    Width = 282
+    Caption = 'Player 2'
+    ClientHeight = 76
+    ClientWidth = 278
+    TabOrder = 2
+    object Player2Coin: TImage
+      Left = 208
+      Height = 64
+      Top = 8
+      Width = 64
+    end
+    object Player2LabeledEdit: TLabeledEdit
+      Left = 8
+      Height = 23
+      Top = 50
+      Width = 184
+      EditLabel.AnchorSideLeft.Control = Player2LabeledEdit
+      EditLabel.AnchorSideRight.Control = Player2LabeledEdit
+      EditLabel.AnchorSideRight.Side = asrBottom
+      EditLabel.AnchorSideBottom.Control = Player2LabeledEdit
+      EditLabel.Left = 8
+      EditLabel.Height = 15
+      EditLabel.Top = 32
+      EditLabel.Width = 184
+      EditLabel.Caption = 'Name'
+      EditLabel.ParentColor = False
+      TabOrder = 0
+    end
+    object Player2TypeCPURadioButton: TRadioButton
+      AnchorSideRight.Side = asrBottom
+      Left = 104
+      Height = 19
+      Top = 8
+      Width = 74
+      Caption = 'Computer'
+      OnClick = PlayerRadioButtonClick
+      TabOrder = 1
+    end
+    object Player2TypeHumRadioButton: TRadioButton
+      Left = 8
+      Height = 19
+      Top = 8
+      Width = 60
+      Caption = 'Human'
+      OnClick = PlayerRadioButtonClick
+      TabOrder = 2
+    end
+  end
+end
